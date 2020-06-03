@@ -38,20 +38,6 @@ static void ui_draw_sidebar_network_strength(UIState *s) {
   ui_draw_image(s->vg, network_img_x, network_img_y, network_img_w, network_img_h, s->img_network[img_idx], 1.0f);
 }
 
-static void ui_draw_sidebar_battery_icon(UIState *s) {
-  const int battery_img_h = 36;
-  const int battery_img_w = 76;
-  const int battery_img_x = !s->scene.uilayout_sidebarcollapsed ? 160 : -(sbr_w);
-  const int battery_img_y = 255;
-
-  int battery_img = s->scene.batteryCharging ? s->img_battery_charging : s->img_battery;
-
-  ui_draw_rect(s->vg, battery_img_x + 6, battery_img_y + 5,
-               ((battery_img_w - 19) * (s->scene.batteryPercent * 0.01)), battery_img_h - 11, COLOR_WHITE);
-
-  ui_draw_image(s->vg, battery_img_x, battery_img_y, battery_img_w, battery_img_h, battery_img, 1.0f);
-}
-
 static void ui_draw_sidebar_network_type(UIState *s) {
   static std::map<cereal::ThermalData::NetworkType, const char *> network_type_map = {
       {cereal::ThermalData::NetworkType::NONE, "--"},
